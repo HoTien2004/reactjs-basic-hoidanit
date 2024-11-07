@@ -1,54 +1,21 @@
 import React from "react";
+import ChildComponent from "./ChildComponent";
+import AddComponent from "./AddComponent";
 
 class MyComponent extends React.Component {
   state = {
-    firstName: "",
-    lastName: "",
-  };
-
-  handleChangeFirstName = (e) => {
-    this.setState({ firstName: e.target.value });
-  };
-
-  handleChangeLastName = (e) => {
-    this.setState({ lastName: e.target.value });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Check data input", this.state);
+    arrJobs: [
+      { id: "abcjob1", title: "dev", salary: "500" },
+      { id: "abcjob2", title: "tester", salary: "400" },
+      { id: "abcjob3", title: "leader", salary: "1000" },
+    ],
   };
 
   render() {
-    // console.log(">>> call render", this.state);
-
     return (
       <>
-        <form action="/">
-          <label htmlFor="fname">First name:</label>
-          <br />
-          <input
-            type="text"
-            value={this.state.firstName}
-            onChange={(e) => this.handleChangeFirstName(e)}
-          />
-
-          <br />
-          <label htmlFor="lname">Last name:</label>
-          <br />
-          <input
-            type="text"
-            value={this.state.lastName}
-            onChange={(e) => this.handleChangeLastName(e)}
-          />
-          <br />
-          <br />
-          <input
-            type="submit"
-            value="Submit"
-            onClick={(e) => this.handleSubmit(e)}
-          />
-        </form>
+        <AddComponent />
+        <ChildComponent arrJobs={this.state.arrJobs} />
       </>
     );
   }
